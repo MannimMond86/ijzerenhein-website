@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 type PropsType = {};
 type StateType = {
 	width: number,
-	pageIndexAnimValue: Animated.Value,
+	pageIndex: Animated.Value,
 };
 
 export class HomeScreen extends Component<PropsType, StateType> {
@@ -91,10 +91,10 @@ export class HomeScreen extends Component<PropsType, StateType> {
 				/>
 				<View style={styles.navContainer}>
 					<TouchableOpacity onPress={this.onPressBack}>
-						<Icon name="arrow-back" />
+						<Icon name="ios-arrow-back" />
 					</TouchableOpacity>
 					<TouchableOpacity onPress={this.onPressForward}>
-						<Icon name="arrow-forward" />
+						<Icon name="ios-arrow-forward" />
 					</TouchableOpacity>
 				</View>
 				<View style={styles.pageIndicators}>
@@ -118,15 +118,11 @@ export class HomeScreen extends Component<PropsType, StateType> {
 		);
 	}
 
-	onLayout = event => {
+	onLayout = (event: any) => {
 		const { width } = event.nativeEvent.layout;
 		if (this.state.width !== width) {
 			this.setState({ width });
 		}
-	};
-
-	onScroll = event => {
-		this.state.scrollOffset.setValue(event.nativeEvent.contentOffset.x);
 	};
 
 	setPageIndex(pageIndex: number) {

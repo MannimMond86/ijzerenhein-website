@@ -8,7 +8,7 @@
     "@react-navigation/web": "^1.0.0-alpha.7",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-native-clipped": "^0.2.0",
+    "react-native-clipped": "^0.2.1",
     "react-native-vector-icons": "^6.4.0",
     "react-scripts": "2.1.8"
   },
@@ -18,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "flow": "./node_modules/.bin/flow ."
+    "flow": "flow"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Animated } from 'react-native';
 import { Heading1 } from '../../components';
 import { Texts } from '../../styles';
+import * as Clipped from 'react-native-clipped';
 
 const styles = StyleSheet.create({
 	container: {
@@ -30,34 +31,11 @@ type PropsType = {
 	width: number,
 	animValue: any,
 };
-type StateType = {
-	animValue: Animated.Value,
-	anim?: any,
-};
+type StateType = {};
 
 export class HomeStartPage extends Component<PropsType, StateType> {
-	state = {
-		animValue: new Animated.Value(0),
-	};
-
-	static getDerivedStateFromProps(props: PropsType, state: StateType) {
-		if (!state.anim) {
-			const anim = Animated.timing(state.animValue, {
-				delay: 100,
-				duration: 10000,
-				toValue: 1,
-			});
-			anim.start();
-			return {
-				anim,
-			};
-		}
-		return null;
-	}
-
 	render() {
-		const { style, width, animValue } = this.props;
-		// const { animValue } = this.state;
+		const { style, animValue } = this.props;
 		return (
 			<Animated.View
 				style={[
@@ -68,22 +46,24 @@ export class HomeStartPage extends Component<PropsType, StateType> {
 							inputRange: [-1, 0, 1],
 							outputRange: [1, 1, -1],
 						}),
-						transform: [
+						/*transform: [
 							{
 								scale: animValue.interpolate({
 									inputRange: [-1, 0, 1],
 									outputRange: [1, 1, 6],
 								}),
 							},
-						],
+						],*/
 					},
 				]}
 			>
-				<Heading1>IjzerenHein</Heading1>
-				<View style={styles.row}>
+				<Clipped.View>
+					<Heading1>IjzerenHein</Heading1>
+				</Clipped.View>
+				<Clipped.View style={styles.row}>
 					<Text style={styles.code}>App Developer</Text>
 					<Text style={styles.creator}> / Creator</Text>
-				</View>
+				</Clipped.View>
 			</Animated.View>
 		);
 	}

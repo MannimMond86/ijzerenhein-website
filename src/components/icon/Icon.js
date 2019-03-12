@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import IonIcon from 'react-native-vector-icons/dist/Ionicons';
 import { Colors } from '../../styles';
@@ -10,7 +11,7 @@ const iconFontStyles = `@font-face {
 }`;
 
 // Create stylesheet
-const style = document.createElement('style');
+const style: any = document.createElement('style');
 style.type = 'text/css';
 if (style.styleSheet) {
 	style.styleSheet.cssText = iconFontStyles;
@@ -19,12 +20,18 @@ if (style.styleSheet) {
 }
 
 // Inject stylesheet
+// $FlowFixMe
 document.head.appendChild(style);
 
-export const Icon = props => (
+type IconProps = {
+	name: any,
+	color?: string,
+	size?: number,
+};
+
+export const Icon = (props: IconProps) => (
 	<IonIcon
-		{...props}
-		name={`ios-${props.name}`}
+		name={props.name}
 		color={props.color || Colors.white}
 		size={props.size || 80}
 	/>

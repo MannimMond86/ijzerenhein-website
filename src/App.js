@@ -1,9 +1,9 @@
+// @flow
 import React, { Component } from 'react';
 import { StyleSheet, View, ImageBackground } from 'react-native';
 import { HomeScreen } from './screens/home';
 import { createSwitchNavigator } from '@react-navigation/core';
 import { createBrowserApp } from '@react-navigation/web';
-import { Styles } from './styles';
 
 const styles = StyleSheet.create({
 	container: {
@@ -25,7 +25,12 @@ const AppNavigator = createSwitchNavigator({
 
 const AppContainer = createBrowserApp(AppNavigator);
 
-export class App extends Component {
+type PropsType = {};
+type StateType = {
+	loaded: boolean,
+};
+
+export class App extends Component<PropsType, StateType> {
 	state = {
 		loaded: false,
 	};

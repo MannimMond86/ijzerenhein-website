@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 });
 
 type PropsType = {
-	style: any,
+	style?: any,
 	index: number,
 	animValue: any,
 	onPress: number => void,
