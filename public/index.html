@@ -6,12 +6,35 @@
     <meta name="theme-color" content="#000000">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" type="image/png" sizes="64x64">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Raleway|Roboto+Slab" rel="stylesheet">
     <title>Hein Rutjes</title>
+    <style>
+      /* These styles make the body full-height */
+      html, body {
+        height: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-stroke: 1.0px;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body { overflow: hidden; }
+      /* These styles make the root element full-height */
+      #react-root {
+        display:flex;
+        height:100%;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#69343e+0,31222a+100 */
+background: #69343e; /* Old browsers */
+background: -moz-linear-gradient(top, #69343e 0%, #31222a 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #69343e 0%,#31222a 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #69343e 0%,#31222a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#69343e', endColorstr='#31222a',GradientType=0 ); /* IE6-9 */
+      }
+    </style>
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <div id="root"></div>
+    <div id="react-root"></div>
   </body>
 </html>
