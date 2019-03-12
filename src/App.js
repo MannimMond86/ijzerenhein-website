@@ -26,16 +26,28 @@ const AppNavigator = createSwitchNavigator({
 const AppContainer = createBrowserApp(AppNavigator);
 
 export class App extends Component {
+	state = {
+		loaded: false,
+	};
+
 	render() {
+		const { loaded } = this.state;
 		return (
 			<View style={styles.container}>
 				<ImageBackground
 					style={styles.image}
 					source={require('./assets/background.png')}
+					onLoad={this.onLoad}
 				>
-					<AppContainer />
+					{loaded ? <AppContainer /> : undefined}
 				</ImageBackground>
 			</View>
 		);
 	}
+
+	onLoad = () => {
+		this.setState({
+			loaded: true,
+		});
+	};
 }

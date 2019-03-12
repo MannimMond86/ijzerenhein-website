@@ -1,14 +1,23 @@
 // @flow
 import React, { Component } from 'react';
-import { StyleSheet, Animated } from 'react-native';
-import { Heading2, Body } from '../../components';
-import { Margins } from '../../styles';
+import { StyleSheet, Animated, Image } from 'react-native';
+import { Body } from '../../components';
+import { Margins, Shadows, Colors } from '../../styles';
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	image: {
+		width: 128,
+		height: 128,
+		borderRadius: 64,
+		borderWidth: 2,
+		borderColor: Colors.white,
+		marginBottom: Margins.regular,
+		...Shadows.elevation1,
 	},
 });
 
@@ -36,13 +45,16 @@ export class HomeWhoPage extends Component<PropsType, StateType> {
 					},
 				]}
 			>
-				<Heading2 margins>Who am I</Heading2>
+				<Image
+					style={styles.image}
+					source={require('../../assets/face.jpeg')}
+				/>
 				<Body>
 					Hi, my name is Hein Rutjes and I'm a seasoned app/software developer
 					with 20+ years of professional software development experience. I'm
 					passionate about app development, from UX to the cloud and everything
-					in between. I create delightful experiences and try to take animations
-					to the next level.
+					in between. I like to create delightful experiences and take
+					animations to the next level.
 				</Body>
 			</Animated.View>
 		);

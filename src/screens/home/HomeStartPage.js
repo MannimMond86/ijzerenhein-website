@@ -66,30 +66,24 @@ export class HomeStartPage extends Component<PropsType, StateType> {
 					{
 						opacity: animValue.interpolate({
 							inputRange: [-1, 0, 1],
-							outputRange: [0, 1, 0],
+							outputRange: [1, 1, -1],
 						}),
-						transform: [{ translateX: Animated.multiply(animValue, -width) }],
-					},
-				]}
-			>
-				<Animated.View
-					style={{
 						transform: [
 							{
 								scale: animValue.interpolate({
-									inputRange: [0, 1],
-									outputRange: [1, 1.2],
+									inputRange: [-1, 0, 1],
+									outputRange: [1, 1, 6],
 								}),
 							},
 						],
-					}}
-				>
-					<Heading1>IjzerenHein</Heading1>
-					<View style={styles.row}>
-						<Text style={styles.code}>App Developer</Text>
-						<Text style={styles.creator}> / Creator</Text>
-					</View>
-				</Animated.View>
+					},
+				]}
+			>
+				<Heading1>IjzerenHein</Heading1>
+				<View style={styles.row}>
+					<Text style={styles.code}>App Developer</Text>
+					<Text style={styles.creator}> / Creator</Text>
+				</View>
 			</Animated.View>
 		);
 	}

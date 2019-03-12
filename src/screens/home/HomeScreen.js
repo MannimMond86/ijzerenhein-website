@@ -11,6 +11,7 @@ import { HomeStartPage } from './HomeStartPage';
 import { HomeWhoPage } from './HomeWhoPage';
 import { HomeWhatPage } from './HomeWhatPage';
 import { Icon } from '../../components';
+import { PageIndicator } from './PageIndicator';
 import { Margins } from '../../styles';
 
 const styles = StyleSheet.create({
@@ -28,6 +29,14 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		margin: Margins.regular,
 	},
+	pageIndicators: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		bottom: Margins.regular,
+		flexDirection: 'row',
+		justifyContent: 'center',
+	},
 });
 
 type PropsType = {};
@@ -38,10 +47,19 @@ type StateType = {
 
 export class HomeScreen extends Component<PropsType, StateType> {
 	_pageIndex = 0;
+	_anim = undefined;
 	state = {
 		width: Dimensions.get('window').width,
-		pageIndex: new Animated.Value(0),
+		pageIndex: new Animated.Value(this._pageIndex),
 	};
+
+	/*componentDidMount() {
+		this._anim = Animated.spring(this.state.pageIndex, {
+			toValue: 0,
+		}).start(() => {
+			this._anim = undefined;
+		});
+	}*/
 
 	render() {
 		const { width, pageIndex } = this.state;
@@ -79,6 +97,23 @@ export class HomeScreen extends Component<PropsType, StateType> {
 						<Icon name="arrow-forward" />
 					</TouchableOpacity>
 				</View>
+				<View style={styles.pageIndicators}>
+					<PageIndicator
+						index={0}
+						animValue={pageIndex}
+						onPress={this.onPressPageIndicator}
+					/>
+					<PageIndicator
+						index={1}
+						animValue={pageIndex}
+						onPress={this.onPressPageIndicator}
+					/>
+					<PageIndicator
+						index={2}
+						animValue={pageIndex}
+						onPress={this.onPressPageIndicator}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -94,21 +129,28 @@ export class HomeScreen extends Component<PropsType, StateType> {
 		this.state.scrollOffset.setValue(event.nativeEvent.contentOffset.x);
 	};
 
+	setPageIndex(pageIndex: number) {
+		this._pageIndex = pageIndex;
+		if (this._anim) this._anim.stop();
+		this._anim = Animated.spring(this.state.pageIndex, {
+			toValue: this._pageIndex,
+		}).start(() => {
+			this._anim = undefined;
+		});
+	}
+
 	onPressBack = () => {
 		if (this._pageIndex <= 0) return;
-		this._pageIndex--;
-
-		Animated.spring(this.state.pageIndex, {
-			toValue: this._pageIndex,
-		}).start();
+		this.setPageIndex(this._pageIndex - 1);
 	};
 
 	onPressForward = () => {
 		if (this._pageIndex >= 2) return;
-		this._pageIndex++;
+		this.setPageIndex(this._pageIndex + 1);
+	};
 
-		Animated.spring(this.state.pageIndex, {
-			toValue: this._pageIndex,
-		}).start();
+	onPressPageIndicator = (pageIndex: number) => {
+		if (this._pageIndex === pageIndex) return;
+		this.setPageIndex(pageIndex);
 	};
 }

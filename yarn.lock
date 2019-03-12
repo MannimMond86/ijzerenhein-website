@@ -8668,6 +8668,11 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-clipped@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-clipped/-/react-native-clipped-0.2.0.tgz#32ed1383ac99a92f9f239bee0951125a7eda0b81"
+  integrity sha512-Zjc3Rsmq2roD8+A04YFycEiH9AiQroGrxfNz5uKNzxopvWRxQv/ZbWOCkkqSpkZEDtu39J8kE3auyHPiQ2L9Tg==
+
 react-native-vector-icons@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.4.0.tgz#95f7f7c6a9f2a0876b507e35b7607b0276b8f13e"
